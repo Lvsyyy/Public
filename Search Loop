@@ -1,5 +1,5 @@
 for _, child in ipairs(game.Workspace:GetDescendants()) do
-  if child:IsA("BasePart") and child.Transparency == 1 and child.CanCollide then
+  if child:IsA("BasePart") and child.Transparency == 1 then
     child:Destroy()
   end
 end
