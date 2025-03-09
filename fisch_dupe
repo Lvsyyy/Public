@@ -82,3 +82,5 @@ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.OnMessageDoneFi
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Lvsyyy/UI/main/Vyxen%20no%20cmds"))()
     end
 end)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ProjektEta/Vixie.lua/refs/heads/main/Loader.lua"))()
